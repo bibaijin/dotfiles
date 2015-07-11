@@ -21,7 +21,7 @@ bundles =
   , bundle "zsh-users/zsh-history-substring-search"
   , bundle "tarruda/zsh-autosuggestions"
   , (bundle "olivierverdier/zsh-git-prompt") { sourcingStrategy = antigenSourcingStrategy }
-  , bundle "tymm/zsh-directory-history"
+  -- , bundle "tymm/zsh-directory-history"
   , bundle "rimraf/k"
 
   -- If you use a plugin that doesn't have a *.plugin.zsh file. You can set a
