@@ -33,3 +33,5 @@ function ranger-cd {
 # This binds Ctrl-O to ranger-cd:
 # bind '"\C-o":"ranger-cd\C-m"'
 # bindkey -s '\C-o' '^qranger-cd\n'
+
+alias ranger="ranger-cd"

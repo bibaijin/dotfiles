@@ -80,5 +80,3 @@ alias k="k -h"
 # # alias panhtml="pandoc -t html5 -s -c /home/bibaijin/share/template/pandoc/html.css --toc"
 # alias panhtml="pandoc -t html5 --self-contained \
     # --template=/home/bibaijin/share/template/pandoc/pure/html5-my.html --toc --toc-depth=3"
-
-# alias ranger="ranger-cd"
