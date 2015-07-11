@@ -1,7 +1,7 @@
 alias reload!='. ~/.zshrc'
-alias ls="ls -G"
-alias ll="ls -l -G"
-alias la="ls -a -G"
+alias ls="ls -h --color"
+alias ll="ls -l -h --color"
+alias la="ls -a -h --color"
 alias k="k -h"
 
 # pacman
@@ -64,12 +64,12 @@ alias pacinsd='sudo pacman -S --asdeps'
 # Force refresh of all package lists after updating /etc/pacman.d/mirrorlist
 alias pacmir='sudo pacman -Syy'
 
-alias cp="acp -g"
-alias mv="amv -g"
-alias maxima="rmaxima"
-alias racket="racket -il readline"
+# alias cp="acp -g"
+# alias mv="amv -g"
+# alias maxima="rmaxima"
+# alias racket="racket -il readline"
 
-pandoc
+# pandoc
 alias pandz="pandoc -t dzslides --template=$HOME/share/template/pandoc/dzslides.html \
     -s -i --slide-level=2 --mathjax --bibliography=ref.bib"
 alias panrv="pandoc -t revealjs -s -i --slide-level=2 --mathjax \
