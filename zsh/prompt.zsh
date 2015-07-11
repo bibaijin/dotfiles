@@ -71,7 +71,7 @@ directory_name() {
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
-export PROMPT=$'\n$(rb_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+# export PROMPT=$'\n$(rb_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
@@ -80,3 +80,13 @@ precmd() {
   title "zsh" "%m" "%55<...<%~"
   set_prompt
 }
+
+# autoload -U promptinit
+# promptinit
+user="%{$fg[cyan]%}%n%{$reset_color%}"
+host="%{$fg[yellow]%}%m%{$reset_color%}"
+work_path="%{$fg_no_bold[green]%}%30<...<%~%<<%{$reset_color%}"
+PS1='$user%B@%b$host: $work_path $(git_super_status)
+%B%(!.#.$)%b '
+PS2='.. '
+RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
