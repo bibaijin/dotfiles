@@ -27,12 +27,15 @@ Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'ervandew/supertab'
 Plugin 'MPiccinato/wombat256'
 Plugin 'fatih/vim-go'
 Plugin 'enomsg/vim-haskellConcealPlus'
 Plugin 'raichoo/haskell-vim'
 " Plugin 'Valloric/YouCompleteMe'
+" Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Yggdroot/indentLine'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -65,7 +68,12 @@ let g:syntastic_mode_map = {
     \ "passive_filetypes": ["java", "tex"] }
 " airline
 set laststatus=2
+" plasticboy/vim-markdown
 " let g:airline#extensions#tabline#enabled = 1
+" indentLine
+let g:indentLine_color_term = 239
+" let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_char = '|'
 
 """""""""""""""""""""""
 " 基本设置
@@ -90,6 +98,7 @@ set shiftround                  "Round indent to nearest shiftwidth multiple
 
 set relativenumber " 相对行号
 set noignorecase
+set foldlevel=1
 
 """"""""""""""""""
 " 主题
@@ -104,13 +113,14 @@ hi CursorColumn term=bold cterm=bold ctermbg=black
 " 显示
 set list
 set listchars=tab:>\ ,trail:~
-hi SpecialKey ctermbg=black
+" hi SpecialKey ctermbg=black
 " set cole=2
 " let g:tex_conceal = 'adgms'
 
 " 状态栏
 set showcmd " 显示命令
 set hlsearch
+set incsearch
 
 " 快捷键
 " 插入模式
@@ -127,4 +137,3 @@ set viminfo+=!
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
-set incsearch
