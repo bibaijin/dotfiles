@@ -3,6 +3,7 @@ alias ls="ls -h --color"
 alias ll="ls -l -h --color"
 alias la="ls -a -h --color"
 alias k="k -h"
+# alias tmux="tmux -2"
 
 # pacman
 # Synchronize with repositories and then upgrade packages that are out of date

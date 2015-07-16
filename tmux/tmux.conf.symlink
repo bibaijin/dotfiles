@@ -72,4 +72,5 @@ bind -r C-l resize-pane -R
 
 bind-key o last-window
 # source "$HOME/lib/powerline/powerline/bindings/tmux/powerline.conf"
-set -g default-terminal "screen-256color"
+# set -g default-terminal "screen-256color"
+set -g default-terminal "rxvt-unicode-256color"
