@@ -33,6 +33,10 @@ Plugin 'MPiccinato/wombat256'
 Plugin 'enomsg/vim-haskellConcealPlus'
 Plugin 'raichoo/haskell-vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'Yggdroot/indentLine'
+Plugin 'Raimondi/delimitMate'
+Plugin 'chase/vim-ansible-yaml'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -63,6 +67,12 @@ filetype plugin indent on    " required
 " let g:syntastic_mode_map = {
 "     \ "mode": "active",
     " \ "passive_filetypes": ["java"] }
+let g:indentLine_color_term = 239
+let g:indentLine_char = '┆'
+" airline
+set laststatus=2
+" vim-ansible-yaml
+let g:ansible_options = {'ignore_blank_lines': 0}
 
 """""""""""""""""""""""
 " 基本设置
@@ -107,6 +117,7 @@ hi SpecialKey ctermbg=black
 
 " 状态栏
 set showcmd " 显示命令
+set hlsearch
 
 " 快捷键
 " 插入模式
@@ -116,3 +127,7 @@ imap <C-a> <Esc>I
 imap <C-e> <Esc>A
 imap <C-p> <Esc>:tabprevious<CR>i
 imap <C-n> <Esc>:tabnext<CR>i
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+set incsearch

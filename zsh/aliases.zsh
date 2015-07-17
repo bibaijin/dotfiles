@@ -1,6 +1,6 @@
 alias reload!='. ~/.zshrc'
 alias ls="ls -G"
-alias ll="ls -l -G"
+alias ll="ls -l -Gh"
 alias la="ls -a -G"
 alias k="k -h"
 
