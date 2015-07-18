@@ -16,6 +16,7 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
+" vim enhance
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-commentary'
@@ -30,6 +31,8 @@ Plugin 'godlygeek/tabular'
 " Plugin 'ervandew/supertab'
 Plugin 'MPiccinato/wombat256'
 " Plugin 'fatih/vim-go'
+
+" haskell
 Plugin 'enomsg/vim-haskellConcealPlus'
 Plugin 'raichoo/haskell-vim'
 Plugin 'Valloric/YouCompleteMe'
@@ -37,6 +40,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'Yggdroot/indentLine'
 Plugin 'Raimondi/delimitMate'
 Plugin 'chase/vim-ansible-yaml'
+Plugin 'davidhalter/jedi-vim'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -73,6 +77,7 @@ let g:indentLine_char = '┆'
 set laststatus=2
 " vim-ansible-yaml
 let g:ansible_options = {'ignore_blank_lines': 0}
+au BufNewFile,BufRead *.yaml set filetype=ansible
 
 """""""""""""""""""""""
 " 基本设置
@@ -96,6 +101,7 @@ set shiftwidth=4                "An indent is 4 spaces
 set shiftround                  "Round indent to nearest shiftwidth multiple
 
 set relativenumber " 相对行号
+set number
 set noignorecase
 
 """"""""""""""""""
