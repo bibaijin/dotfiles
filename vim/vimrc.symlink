@@ -36,6 +36,8 @@ Plugin 'raichoo/haskell-vim'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Yggdroot/indentLine'
+Plugin 'Raimondi/delimitMate'
+Plugin 'davidhalter/jedi-vim'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -58,6 +60,8 @@ filetype plugin indent on    " required
 """""""""""""""
 " 插件配置
 """""""""""""""
+" Vundle
+set shell=/bin/bash
 " Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 " vim-haskellConcealPlus
 " SuperTab
@@ -66,6 +70,7 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "passive_filetypes": ["java", "tex"] }
+let g:syntastic_python_python_exec = '/usr/bin/python2'
 " airline
 set laststatus=2
 " plasticboy/vim-markdown
@@ -74,6 +79,24 @@ set laststatus=2
 let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#A4E57E'
 let g:indentLine_char = '|'
+" haskell-vim
+" let g:haskell_enable_quantification = 1
+" let g:haskell_enable_recursivedo = 1
+" let g:haskell_enable_arrowsyntax = 1
+" let g:haskell_enable_pattern_synonyms = 1
+" let g:haskell_enable_typeroles = 1
+" let g:haskell_enable_static_pointers = 1
+" let g:haskell_indent_if = 3
+" let g:haskell_indent_case = 2
+" let g:haskell_indent_let = 4
+" let g:haskell_indent_where = 6
+" Tabular
+" set timeout timeoutlen=1000 ttimeoutlen=1000
+nmap <Leader>a= :Tabularize / = /<CR>
+vmap <Leader>a= :Tabularize / = /<CR>
+nmap <Leader>a: :Tabularize /: /<CR>
+vmap <Leader>a: :Tabularize /: /<CR>
+
 
 """""""""""""""""""""""
 " 基本设置
@@ -88,6 +111,7 @@ set textwidth=78  " 自动换行
 " m: 按字符为单位分行
 " M: 连接行时，不要插入空格
 set formatoptions+=mM
+set autoindent
 
 " Tab specific option
 set tabstop=8                   "A tab is 8 spaces
@@ -96,6 +120,7 @@ set softtabstop=4               "Insert 4 spaces when tab is pressed
 set shiftwidth=4                "An indent is 4 spaces
 set shiftround                  "Round indent to nearest shiftwidth multiple
 
+set number
 set relativenumber " 相对行号
 set noignorecase
 set foldlevel=1
