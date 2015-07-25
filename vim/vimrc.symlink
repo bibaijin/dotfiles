@@ -16,26 +16,42 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
-Plugin 'scrooloose/nerdtree'
+" dependencies
+Plugin 'Shougo/vimproc.vim'     " need by ghcmod-vim
+" vim theme
+Plugin 'MPiccinato/wombat256'  " 主题
+Plugin 'bling/vim-airline'     " 状态栏
+Plugin 'Raimondi/delimitMate'  " 自动关闭括号、引导等
+Plugin 'Yggdroot/indentLine'   " 显示缩进层次
+" vim enhance
+Plugin 'scrooloose/syntastic'  " 语法检查
+Plugin 'ervandew/supertab'     " 自动补全
+Plugin 'tpope/vim-commentary'  " 注释快捷键
+Plugin 'scrooloose/nerdtree'   " 文件树视图
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
-Plugin 'bling/vim-airline'
-" Plugin 'scrooloose/nerdcommenter'
 Plugin 'majutsushi/tagbar'
 Plugin 'easymotion/vim-easymotion'
+" python
+Plugin 'davidhalter/jedi-vim' " completion for python
+" markdown
 Plugin 'godlygeek/tabular'
-Plugin 'ervandew/supertab'
-Plugin 'MPiccinato/wombat256'
-" Plugin 'fatih/vim-go'
-" Plugin 'enomsg/vim-haskellConcealPlus'
-Plugin 'raichoo/haskell-vim'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'Yggdroot/indentLine'
-Plugin 'Raimondi/delimitMate'
+" TeX
 Plugin 'lervag/vimtex'
+Plugin 'plasticboy/vim-markdown'
+" golang
+Plugin 'fatih/vim-go'
+" haskell
+Plugin 'lukerandall/haskellmode-vim'
+" Plugin 'eagletmt/neco-ghc'
+" Plugin 'eagletmt/ghcmod-vim'
+" Plugin 'raichoo/haskell-vim'
+" Plugin 'enomsg/vim-haskellConcealPlus'
+" not use now
+" Plugin 'scrooloose/nerdcommenter'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'nathanaelkane/vim-indent-guides'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -68,12 +84,35 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "passive_filetypes": ["java", "tex"] }
+let g:syntastic_python_python_exec = '/usr/bin/python2'
 " airline
 set laststatus=2
+" plasticboy/vim-markdown
 " let g:airline#extensions#tabline#enabled = 1
 " indentLine
-let g:indentLine_char = '┆'
 let g:indentLine_color_term = 239
+" let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_char = '┆'
+" haskell-vim
+" let g:haskell_enable_quantification = 1
+" let g:haskell_enable_recursivedo = 1
+" let g:haskell_enable_arrowsyntax = 1
+" let g:haskell_enable_pattern_synonyms = 1
+" let g:haskell_enable_typeroles = 1
+" let g:haskell_enable_static_pointers = 1
+" let g:haskell_indent_if = 3
+" let g:haskell_indent_case = 2
+" let g:haskell_indent_let = 4
+" let g:haskell_indent_where = 6
+" Tabular
+" set timeout timeoutlen=1000 ttimeoutlen=1000
+nmap <Leader>a= :Tabularize / = /l0<CR>
+vmap <Leader>a= :Tabularize / = /l0<CR>
+nmap <Leader>a: :Tabularize /: /l0<CR>
+vmap <Leader>a: :Tabularize /: /l0<CR>
+" delimitMate
+" haskellmode-vim
+let g:haddock_browser = "/usr/bin/lynx"
 
 """""""""""""""""""""""
 " 基本设置
@@ -88,6 +127,7 @@ set textwidth=78  " 自动换行
 " m: 按字符为单位分行
 " M: 连接行时，不要插入空格
 set formatoptions+=mM
+set autoindent
 
 " Tab specific option
 set tabstop=8                   "A tab is 8 spaces
@@ -96,7 +136,10 @@ set softtabstop=4               "Insert 4 spaces when tab is pressed
 set shiftwidth=4                "An indent is 4 spaces
 set shiftround                  "Round indent to nearest shiftwidth multiple
 
-set autoindent
+set number
+set relativenumber " 相对行号
+set noignorecase
+set foldlevel=1
 
 """"""""""""""""""
 " 主题
@@ -121,14 +164,9 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 " 显示
 set list
 set listchars=tab:>\ ,trail:~
-hi SpecialKey ctermbg=black
+" hi SpecialKey ctermbg=black
 " set cole=2
 " let g:tex_conceal = 'adgms'
-
-set relativenumber " 相对行号
-set number
-set noignorecase
-
 
 " 快捷键
 " 插入模式

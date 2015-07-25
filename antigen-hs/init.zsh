@@ -1,1 +1,1 @@
-/home/bibaijin/.zsh/antigen-hs/init.zsh
+/home/vagrant/.zsh/antigen-hs/init.zsh
