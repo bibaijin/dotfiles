@@ -1,3 +1,50 @@
 .DS_Store
 *~
 *.swp
+
+# My
+######################
+
+# backups
+*.bak
+*.bak.*
+*~
+*.swap
+
+# Haskell
+*.hi
+*.errors
+
+# Python
+__pycache__
+*.pyo
+*.pyc
+
+# C
+*.a
+
+# git
+# .gitignore
+
+# syncthing
+.sync
+.stfolder
+.stversions
+
+# encryption
+*.enc
+*.encry
+
+# tex
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.idx
+*.log
+*.out
+*.run.xml
+*.toc
+main.pdf
+# haskell 
+*.o

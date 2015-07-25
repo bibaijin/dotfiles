@@ -29,10 +29,13 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'godlygeek/tabular'
 Plugin 'ervandew/supertab'
 Plugin 'MPiccinato/wombat256'
-Plugin 'fatih/vim-go'
-Plugin 'enomsg/vim-haskellConcealPlus'
+" Plugin 'fatih/vim-go'
+" Plugin 'enomsg/vim-haskellConcealPlus'
 Plugin 'raichoo/haskell-vim'
 " Plugin 'Valloric/YouCompleteMe'
+Plugin 'Yggdroot/indentLine'
+Plugin 'Raimondi/delimitMate'
+Plugin 'lervag/vimtex'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -55,6 +58,8 @@ filetype plugin indent on    " required
 """""""""""""""
 " 插件配置
 """""""""""""""
+" Vundle
+set shell=/bin/bash     " there is a bug when using fish
 " Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 " vim-haskellConcealPlus
 " SuperTab
@@ -66,6 +71,9 @@ let g:syntastic_mode_map = {
 " airline
 set laststatus=2
 " let g:airline#extensions#tabline#enabled = 1
+" indentLine
+let g:indentLine_char = '┆'
+let g:indentLine_color_term = 239
 
 """""""""""""""""""""""
 " 基本设置
@@ -88,8 +96,7 @@ set softtabstop=4               "Insert 4 spaces when tab is pressed
 set shiftwidth=4                "An indent is 4 spaces
 set shiftround                  "Round indent to nearest shiftwidth multiple
 
-set relativenumber " 相对行号
-set noignorecase
+set autoindent
 
 """"""""""""""""""
 " 主题
@@ -101,6 +108,16 @@ set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=black
 set cursorcolumn
 hi CursorColumn term=bold cterm=bold ctermbg=black
+" 状态栏
+set showcmd " 显示命令
+set hlsearch
+set incsearch
+
+" 文件类型
+" Makefile
+au BufRead,BufNewFile *.mkf setfiletype make
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
 " 显示
 set list
 set listchars=tab:>\ ,trail:~
@@ -108,9 +125,10 @@ hi SpecialKey ctermbg=black
 " set cole=2
 " let g:tex_conceal = 'adgms'
 
-" 状态栏
-set showcmd " 显示命令
-set hlsearch
+set relativenumber " 相对行号
+set number
+set noignorecase
+
 
 " 快捷键
 " 插入模式
@@ -127,4 +145,3 @@ set viminfo+=!
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
-set incsearch
