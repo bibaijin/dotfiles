@@ -37,7 +37,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'davidhalter/jedi-vim' " completion for python
 " markdown
 Plugin 'godlygeek/tabular'
-Plugin 'suan/vim-instant-markdown'
+" Plugin 'suan/vim-instant-markdown'
 " TeX
 Plugin 'lervag/vimtex'
 Plugin 'plasticboy/vim-markdown'

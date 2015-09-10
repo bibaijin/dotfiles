@@ -2,7 +2,7 @@
 export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=/vagrant/Code
+export PROJECTS=~/Code
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -Uz compinit
