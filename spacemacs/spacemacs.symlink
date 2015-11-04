@@ -32,6 +32,9 @@
      (haskell :variables
               haskell-enable-shm-support t
               haskell-enable-hindent-style "johan-tibell")
+     ;; python
+     (python :variables
+             python-enable-yapf-format-on-save t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
