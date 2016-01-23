@@ -18,10 +18,13 @@ bundles =
   , bundle "Tarrasch/zsh-bd"
   , bundle "zsh-users/zsh-syntax-highlighting"
   , bundle "zsh-users/zsh-history-substring-search"
-  , bundle "tarruda/zsh-autosuggestions"
-  , (bundle "olivierverdier/zsh-git-prompt") { sourcingStrategy = antigenSourcingStrategy }
-  -- , bundle "tymm/zsh-directory-history"
   , bundle "rimraf/k"
+  , (bundle "olivierverdier/zsh-git-prompt") { sourcingStrategy = antigenSourcingStrategy }
+  , (bundle "tarruda/zsh-autosuggestions")
+        { sourcingStrategy = filePathsSourcingStrategy
+                                [ "autosuggestions.zsh"
+                                ] }
+  -- , bundle "tymm/zsh-directory-history"
 
   -- If you use a plugin that doesn't have a *.plugin.zsh file. You can set a
   -- more liberal sourcing strategy.
