@@ -34,7 +34,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'majutsushi/tagbar'
 Plugin 'easymotion/vim-easymotion'
 " python
-Plugin 'davidhalter/jedi-vim' " completion for python
+" Plugin 'davidhalter/jedi-vim' " completion for python
+Plugin 'klen/python-mode'
 " markdown
 Plugin 'godlygeek/tabular'
 " Plugin 'suan/vim-instant-markdown'
@@ -53,7 +54,7 @@ Plugin 'lukerandall/haskellmode-vim'
 " Plugin 'scrooloose/nerdcommenter'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'nathanaelkane/vim-indent-guides'
-" react
+" jsx
 Plugin 'mxw/vim-jsx'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -116,6 +117,10 @@ vmap <Leader>a: :Tabularize /: /l0<CR>
 " delimitMate
 " haskellmode-vim
 let g:haddock_browser = "/usr/bin/lynx"
+" vim-jsx
+" let g:jsx_ext_required = 0
+" python-mode
+nmap gqaf :PymodeLintAuto<CR>
 
 " vim-jsx
 " let g:jsx_ext_required = 0

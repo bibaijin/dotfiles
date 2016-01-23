@@ -3,6 +3,8 @@ alias ls="ls -h --color"
 alias ll="ls -l -h --color"
 alias la="ls -a -h --color"
 alias k="k -h"
+alias reboot="sudo reboot"
+alias poweroff="sudo poweroff"
 # alias tmux="tmux -2"
 
 # pacman
@@ -75,7 +77,7 @@ alias pandz="pandoc -t dzslides --template=$HOME/share/template/pandoc/dzslides.
     -s -i --slide-level=2 --mathjax --bibliography=ref.bib"
 alias panrv="pandoc -t revealjs -s -i --slide-level=2 --mathjax \
     --bibliography=ref.bib --toc --toc-depth=2"
-alias panpdf="pandoc --latex-engine=xelatex --template=$HOME/share/template/pandoc/pdf.tex"
+# alias panpdf="pandoc --latex-engine=xelatex --template=$HOME/share/template/pandoc/pdf.tex"
 alias panbeamer="pandoc -t beamer --latex-engine=xelatex \
     --template=$HOME/share/template/pandoc/beamer.tex"
 # alias panhtml="pandoc -t html5 -s -c /home/bibaijin/share/template/pandoc/html.css --toc"
