@@ -53,6 +53,8 @@ Plugin 'lukerandall/haskellmode-vim'
 " Plugin 'scrooloose/nerdcommenter'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'nathanaelkane/vim-indent-guides'
+" react
+Plugin 'mxw/vim-jsx'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -115,6 +117,9 @@ vmap <Leader>a: :Tabularize /: /l0<CR>
 " haskellmode-vim
 let g:haddock_browser = "/usr/bin/lynx"
 
+" vim-jsx
+" let g:jsx_ext_required = 0
+
 """""""""""""""""""""""
 " 基本设置
 """""""""""""""""""""""
@@ -159,8 +164,10 @@ set incsearch
 
 " 文件类型
 " Makefile
-au BufRead,BufNewFile *.mkf setfiletype make
+au BufRead,BufNewFile *.mkf set filetype=make
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+" jsx
+" au BufRead,BufNewFile *.html set filetype=javascript.jsx
 
 " 显示
 set list
