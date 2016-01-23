@@ -81,6 +81,7 @@ filetype plugin indent on    " required
 " Vundle
 set shell=/bin/bash     " there is a bug when using fish
 " Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+" set g:powerline_pycmd = "py3"
 " vim-haskellConcealPlus
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
