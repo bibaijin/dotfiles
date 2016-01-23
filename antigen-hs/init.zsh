@@ -1,0 +1,1 @@
+/home/bibaijin/.zsh/antigen-hs/init.zsh
