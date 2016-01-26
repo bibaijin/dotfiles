@@ -177,13 +177,16 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+
+  ;; line number
+  (global-linum-mode)
+  ;; relative line number
+  (with-eval-after-load 'linum
+    (linum-relative-toggle))
+
   ;; text width
   (add-hook 'text-mode-hook 'auto-fill-mode)
   (add-hook 'text-mode-hook 'fci-mode)
-  ;; line number
-  (global-linum-mode)
-  (with-eval-after-load 'linum
-    (linum-relative-toggle))
   ;; indent
   (indent-guide-global-mode)
   ;; shortcut
@@ -202,6 +205,7 @@ layers configuration."
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+
   ;; asy-mod
   (add-to-list 'load-path "/usr/share/asymptote")
   (autoload 'asy-mode "asy-mode.el" "Asymptote major mode." t)
