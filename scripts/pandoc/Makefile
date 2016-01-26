@@ -1,0 +1,1 @@
+/home/bibaijin/.config/ghc/ghc.mkf
