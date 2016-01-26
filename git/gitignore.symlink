@@ -51,6 +51,7 @@ Thumbs.db
 # Haskell
 *.hi
 *.errors
+.stack-work/
 
 # Python
 __pycache__
