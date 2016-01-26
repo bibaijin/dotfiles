@@ -1,0 +1,158 @@
+\documentclass[11pt,a4paper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% 中文适配
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 排版
+\usepackage{xltxtra,fontspec,xunicode}
+\usepackage[slantfont,boldfont,CJKchecksingle]{xeCJK}
+\CJKsetecglue{\hskip 0.15em plus 0.05 em minus 0.05em}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip=0pt plus 1pt minus 0.1pt
+\usepackage{indentfirst}
+\setlength{\parindent}{2.2em}
+
+% 字体
+\setCJKmainfont[BoldFont=Adobe Heiti Std]{Adobe Song Std}
+\setCJKsansfont{Adobe Heiti Std}
+\setCJKmonofont{WenQuanYi Micro Hei Mono}
+\setCJKfamilyfont{FZLiuKai}{FZSuXinShiLiuKaiS-R-GB}
+\newcommand{\FZLiuKai}{\CJKfamily{FZLiuKai}}
+
+% 汉化
+\renewcommand{\contentsname}{目录}
+\usepackage{titlesec, titletoc}
+\titleformat{\chapter}{\centering\huge}{第\thechapter{}章}{1em}{\textbf}
+\titleformat{\section}{\centering\large}{\thesection}{1em}{\textbf}
+\titleformat{\subsection}{\large}{\thesubsection}{1em}{\textbf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% 排版
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[top=1.2in,bottom=1.2in,left=1.2in,right=1in]{geometry}
+\renewcommand{\baselinestretch}{1.4}\normalsize
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% 有用的宏包
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 超链接
+\usepackage[colorlinks=true,linkcolor=black,CJKbookmarks=true]{hyperref}
+
+% 页眉页脚
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% 数理符号
+\usepackage{physics}
+\usepackage{amsmath, amssymb, amsthm}
+
+\usepackage{type1cm}
+\usepackage{bbding}
+\usepackage{color,xcolor}
+\usepackage{latexsym}
+\usepackage{bm}
+\usepackage{relsize}
+\usepackage{makeidx}
+
+% 表格
+$if(tables)$
+  \usepackage{longtable,booktabs}
+  \newcommand{\topcaption}{%
+    \setlength{\abovecaptionskip}{0pt}%
+    \setlength{\belowcaptionskip}{10pt}%
+    \caption
+  }
+$endif$
+
+% 图片
+$if(graphics)$
+  \usepackage{graphicx,grffile}
+  \makeatletter
+  \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+  \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+  \makeatother
+  % Scale images if necessary, so that they will not overflow the page
+  % margins by default, and it is still possible to overwrite the defaults
+  % using explicit options in \includegraphics[width, height, ...]{}
+  \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+$endif$
+
+% 常用结构
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{diagbox}
+
+% 代码高亮
+\usepackage{listings}
+\lstloadlanguages{}
+
+\usepackage{authblk}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% 自定义命令
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\ud}{\mathrm{d}}
+
+\makeindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% 内容
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+$if(title)$
+  \title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
+$endif$
+
+$if(author)$
+  \author{\FZLiuKai{$for(author)$$author$$sep$ \and $endfor$}}
+$endif$
+
+\date{$date$}
+
+$for(header-includes)$
+  $header-includes$
+$endfor$
+
+\begin{document}
+
+$if(title)$
+  \maketitle
+$endif$
+
+$if(abstract)$
+  \begin{abstract}
+    $abstract$
+  \end{abstract}
+$endif$
+
+$for(include-before)$
+  $include-before$
+$endfor$
+
+$if(toc)$
+{
+  \hypersetup{linkcolor=black}
+  \setcounter{tocdepth}{$toc-depth$}
+  \tableofcontents
+}
+$endif$
+
+$if(lot)$
+  \listoftables
+$endif$
+
+$if(lof)$
+  \listoffigures
+$endif$
+
+$body$
+
+$for(include-after)$
+  $include-after$
+$endfor$
+
+\end{document}

@@ -1,0 +1,13 @@
+filename=周报_2016-01-22_对信道矩阵的理论仿真
+
+topdf:
+	panpdf main.md
+
+view:
+	okular main.pdf &
+
+rename:
+	mv main.pdf $(filename).pdf
+
+clean:
+	rm -f main.pdf
