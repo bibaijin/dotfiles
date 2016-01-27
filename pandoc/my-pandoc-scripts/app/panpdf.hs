@@ -49,14 +49,14 @@ getNewName filename =
 getTemplateConf :: IO Text
 getTemplateConf = do
    home <- getHomeDirectory
-   return $ fromString $ "--template=" ++ home ++ "/.config/pandoc/pdf.tex"
+   return $ fromString $ "--template=" ++ home ++ "/.dotfiles/pandoc/styles/pdf.tex"
 
 getCslConf :: IO Text
 getCslConf = do
    home <- getHomeDirectory
-   return $ fromString $ "--csl=" ++ home ++ "/.config/pandoc/chinese-gb7714-2005-numeric.csl"
+   return $ fromString $ "--csl=" ++ home ++ "/.dotfiles/pandoc/styles/chinese-gb7714-2005-numeric.csl"
 
 getCrossRefConf :: IO Text
 getCrossRefConf = do
    home <- getHomeDirectory
-   return $ fromString $ "--metadata=crossrefYaml:" ++ home ++ "/.config/pandoc/pandoc-crossref-zh.yaml"
+   return $ fromString $ "--metadata=crossrefYaml:" ++ home ++ "/.dotfiles/pandoc/styles/pandoc-crossref-zh.yaml"
