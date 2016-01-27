@@ -108,7 +108,7 @@ $if(title)$
 $endif$
 
 $if(author)$
-  \author{\FZLiuKai{$for(author)$$author$$sep$ \and $endfor$}}
+  \author{$for(author)$\FZLiuKai{$author$}$sep$ \and $endfor$}
 $endif$
 
 \date{$date$}
