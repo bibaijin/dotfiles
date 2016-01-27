@@ -1,7 +1,7 @@
 filename=周报_2016-01-22_对信道矩阵的理论仿真
 
 topdf:
-	panpdf main.md
+	panpdf -l En main.md
 
 view:
 	okular main.pdf &

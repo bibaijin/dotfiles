@@ -21,15 +21,28 @@ main = execParser opts >>= panpdf
              progDesc "Convert FILE format from markdown to pdf by Pandoc" <>
              header "panpdf - pandoc markdown to pdf")
 
-arg :: Parser String
-arg = argument str (metavar "FILE")
+data Arguments = Arguments {
+       language :: Language
+     , file     :: String  }
 
-panpdf :: String -> IO ()
-panpdf filename =
+data Language = Zh | En deriving (Eq, Show, Read)
+
+arg :: Parser Arguments
+arg = Arguments
+  <$> option auto
+                  ( long "language"
+                  <> short 'l'
+                  <> value Zh
+                  <> metavar "LANGUAGE"
+                  <> help "Which language's template to use(Zh or En)" )
+  <*> argument str (metavar "FILE")
+
+panpdf :: Arguments -> IO ()
+panpdf (Arguments language filename) =
     shelly $ verbosely $ do
-       templateConf <- liftIO getTemplateConf
-       cslConf <- liftIO getCslConf
-       crossRefConf <- liftIO getCrossRefConf
+       templateConf <- liftIO $ getTemplateConf language
+       cslConf <- liftIO $ getCslConf language
+       crossRefConf <- liftIO $ getCrossRefConf language
        run_
            "pandoc"
            [ "--latex-engine=xelatex"
@@ -46,17 +59,26 @@ getNewName :: String -> Text
 getNewName filename =
     fromString $ takeBaseName (fromString filename) ++ ".pdf"
 
-getTemplateConf :: IO Text
-getTemplateConf = do
+getTemplateConf :: Language -> IO Text
+getTemplateConf Zh = do
    home <- getHomeDirectory
-   return $ fromString $ "--template=" ++ home ++ "/.dotfiles/pandoc/styles/pdf.tex"
+   return $ fromString $ "--template=" ++ home ++ "/.dotfiles/pandoc/styles/pdf-zh.tex"
+getTemplateConf En = do
+   home <- getHomeDirectory
+   return $ fromString $ "--template=" ++ home ++ "/.dotfiles/pandoc/styles/pdf-en.tex"
 
-getCslConf :: IO Text
-getCslConf = do
+getCslConf :: Language -> IO Text
+getCslConf Zh = do
    home <- getHomeDirectory
    return $ fromString $ "--csl=" ++ home ++ "/.dotfiles/pandoc/styles/chinese-gb7714-2005-numeric.csl"
+getCslConf En = do
+   home <- getHomeDirectory
+   return $ fromString $ "--csl=" ++ home ++ "/.dotfiles/pandoc/styles/ieee.csl"
 
-getCrossRefConf :: IO Text
-getCrossRefConf = do
+getCrossRefConf :: Language -> IO Text
+getCrossRefConf Zh = do
    home <- getHomeDirectory
    return $ fromString $ "--metadata=crossrefYaml:" ++ home ++ "/.dotfiles/pandoc/styles/pandoc-crossref-zh.yaml"
+getCrossRefConf En = do
+   home <- getHomeDirectory
+   return $ fromString $ "--metadata=crossrefYaml:" ++ home ++ "/.dotfiles/pandoc/styles/pandoc-crossref-en.yaml"
