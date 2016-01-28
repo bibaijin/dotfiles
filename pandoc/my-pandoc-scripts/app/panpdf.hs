@@ -47,7 +47,7 @@ panpdf (Arguments language filename) =
            "pandoc"
            [ "--latex-engine=xelatex"
            , templateConf
-           , "--toc"
+           -- , "--toc"
            , "--bibliography=ref.bib"
            , cslConf
            , "--filter", "pandoc-crossref"

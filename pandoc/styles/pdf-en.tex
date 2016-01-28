@@ -4,6 +4,9 @@
 % 排版
 %%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{xltxtra,fontspec,xunicode}
+\setmainfont{Times New Roman}
+
 \usepackage[top=1.2in,bottom=1.2in,left=1.2in,right=1in]{geometry}
 \renewcommand{\baselinestretch}{1.4}\normalsize
 
@@ -81,7 +84,7 @@ $if(title)$
 $endif$
 
 $if(author)$
-  \author{$for(author)$$author$$sep$ \and $endfor$}
+  \author{$for(author)$$author$$sep$, $endfor$}
 $endif$
 
 \date{$date$}
