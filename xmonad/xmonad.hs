@@ -67,7 +67,7 @@ myLogHook xmobarPipe = dynamicLogWithPP xmobarPrinter
 myModMask :: KeyMask
 myModMask = mod1Mask
 myKeys :: [((KeyMask, KeySym), X ())]
-myKeys = [ ((myModMask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
+myKeys = [ ((myModMask .|. shiftMask, xK_l), spawn "i3lock -i ~/.wallpaper/40_1366x768.png")
          , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
          , ((0, xK_Print), spawn "scrot")
          , ((myModMask, xK_d), spawn "j4-dmenu-desktop")
