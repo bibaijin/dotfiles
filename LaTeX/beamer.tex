@@ -1,0 +1,103 @@
+%\documentclass[14pt,xcolor=dvipsnames]{beamer}
+\documentclass{beamer}
+
+%主题
+\usetheme{Madrid}
+%\usetheme{PaloAlto}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{AnnArbor}
+%\usetheme{CambridgeUS}
+%\usetheme{Darmstadt}
+%\useoutertheme{umbcfootline}
+%\setbeamertemplate{items}[default]
+%\setbeamertemplate{blocks}[rounded][shadow=true]
+%\usecolortheme{default}
+%\usecolortheme{dolphin}
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{itemize items}[default]
+
+%xeCJK相关宏包
+%字体设置
+\usepackage{xltxtra,fontspec,xunicode}
+\usepackage[slantfont,boldfont,CJKchecksingle]{xeCJK}
+\CJKsetecglue{\hskip 0.15em plus 0.05 em minus 0.05em}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip=0pt plus 1pt minus 0.1pt
+%中文字体
+%\setCJKmainfont[BoldFont=Adobe Heiti Std]{Adobe Song Std}
+\setCJKmainfont{WenQuanYi Micro Hei}
+%\setCJKsansfont[BoldFont=Adobe Heiti Std]{Adobe Kaiti Std}
+\setCJKsansfont{WenQuanYi Micro Hei}
+%\setCJKmonofont{WenQuanYi Micro Hei Mono}
+\setCJKmonofont{WenQuanYi Micro Hei Mono}
+%\usefonttheme{professionalfonts}
+%\usefonttheme{serif}
+%定义新字体
+\setCJKfamilyfont{song}{Adobe Song Std}
+\setCJKfamilyfont{kai}{Adobe Kaiti Std}
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{fangsong}{Adobe Fangsong Std}
+\setCJKfamilyfont{lisu}{LiSu}
+\setCJKfamilyfont{youyuan}{YouYuan}
+\newcommand{\song}{\CJKfamily{song}}
+\newcommand{\kai}{\CJKfamily{kai}}
+\newcommand{\hei}{\CJKfamily{hei}}
+\newcommand{\fangsong}{\CJKfamily{fangsong}}
+\newcommand{\lisu}{\CJKfamily{lisu}}
+\newcommand{\youyuan}{\CJKfamily{youyuan}}
+
+\defaultfontfeatures{Mapping=tex-text}
+
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+\newcommand{\ud}{\mathrm{d}}
+
+\usepackage{setspace}
+\usepackage{colortbl,xcolor,color}
+\usepackage{hyperref}
+\hypersetup
+%{xetex,bookmarksnumbered=true,bookmarksopen,pdfborder=1,breaklinks,colorlinks=true,linkcolor=cyan,filecolor=black,urlcolor=cyan,citecolor=green}
+%{xetex,bookmarksnumbered=true,bookmarksopen,pdfborder=1,breaklinks,colorlinks=true,filecolor=black,urlcolor=cyan,citecolor=green}
+{xetex,bookmarksnumbered=true,bookmarksopen,pdfborder=1,breaklinks,colorlinks=true,CJKbookmarks=true}
+%\setlength{\parindent}{2em}
+
+%插入图片
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+
+%可能用到的包
+\usepackage{amsmath,amssymb}
+\usepackage{multimedia}
+\usepackage{tabularx,multirow,multicol,keystroke,subfigure,longtable}
+\usepackage{diagbox}
+\usepackage[all]{xy}
+\usepackage[backend=biber,style=caspervector,utf8,sorting=centy]{biblatex}
+\addbibresource{ref.bib}
+%\usepackage{cite}
+%\usepackage[numbers,sort&compress]{natbib}
+%\usepackage{hypernat}
+%\bibliographystyle{plain}
+
+%在表格、图片等的标题中显示编号
+\setbeamertemplate{caption}[numbered]
+
+%插入目录
+\AtBeginSection[]
+{
+    \begin{frame}
+	\frametitle{目录}
+	\tableofcontents[currentsection,hideallsubsections]
+    \end{frame}
+    \addtocounter{framenumber}{-1}
+}
+
+\AtBeginSubsection[]
+{
+    \begin{frame}{子目录}
+	%\setcounter{tocdepth}{2}
+	\tableofcontents[currentsection,currentsubsection,sections={\thesection}]
+    \end{frame}
+    \addtocounter{framenumber}{-1}
+}

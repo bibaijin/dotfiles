@@ -18,26 +18,33 @@ Plugin 'gmarik/Vundle.vim'
 
 " dependencies
 Plugin 'Shougo/vimproc.vim'     " need by ghcmod-vim
+
+" 导航
+Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'scrooloose/nerdtree'   " 文件树视图
+" Plugin 'jistr/vim-nerdtree-tabs'
+
 " vim theme
 Plugin 'MPiccinato/wombat256'  " 主题
 Plugin 'vim-airline/vim-airline'     " 状态栏
+Plugin 'bling/vim-bufferline'
+" Plugin 'vim-airline/vim-airline-themes'     " 状态栏
 Plugin 'Raimondi/delimitMate'  " 自动关闭括号、引导等
 Plugin 'Yggdroot/indentLine'   " 显示缩进层次
 " vim enhance
 Plugin 'scrooloose/syntastic'  " 语法检查
 Plugin 'ervandew/supertab'     " 自动补全
 Plugin 'tpope/vim-commentary'  " 注释快捷键
-Plugin 'scrooloose/nerdtree'   " 文件树视图
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'majutsushi/tagbar'
-Plugin 'easymotion/vim-easymotion'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-surround'
+" Plugin 'majutsushi/tagbar'
+" Plugin 'easymotion/vim-easymotion'
 " python
 " Plugin 'davidhalter/jedi-vim' " completion for python
 Plugin 'klen/python-mode'
 " markdown
-Plugin 'godlygeek/tabular'
+" Plugin 'godlygeek/tabular'
 " Plugin 'suan/vim-instant-markdown'
 " TeX
 Plugin 'lervag/vimtex'
@@ -46,6 +53,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'fatih/vim-go'
 " haskell
 Plugin 'lukerandall/haskellmode-vim'
+Plugin 'pbrisbin/vim-syntax-shakespeare'
 " Plugin 'eagletmt/neco-ghc'
 " Plugin 'eagletmt/ghcmod-vim'
 " Plugin 'raichoo/haskell-vim'
@@ -80,6 +88,21 @@ filetype plugin indent on    " required
 """""""""""""""
 " Vundle
 set shell=/bin/bash     " there is a bug when using fish
+
+" ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+map <c-o> <c-^>
+map <c-b> :CtrlPBuffer<CR>
+map <c-l> :CtrlPMRU<CR>
+
+" NERDTree
+" let g:NERDTreeWinPos = "right"
+" let g:NERDTreeWinSize = 29
+" " map <C-n> :NERDTreeToggle<CR>
+" autocmd vimenter * NERDTree
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 " let $PYTHONPATH="/usr/lib/python3.5/site-packages"
 " vim-haskellConcealPlus
@@ -90,14 +113,19 @@ let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "passive_filetypes": ["java", "tex"] }
 let g:syntastic_python_python_exec = '/usr/bin/python2'
+
 " airline
 set laststatus=2
+let g:bufferline_echo = 0
+" let g:airline#extensions#tabline#enabled = 1
+
 " plasticboy/vim-markdown
 " let g:airline#extensions#tabline#enabled = 1
 " indentLine
 let g:indentLine_color_term = 239
 " let g:indentLine_color_gui = '#A4E57E'
 let g:indentLine_char = '┆'
+let g:indentLine_concealcursor = 'c'
 " haskell-vim
 " let g:haskell_enable_quantification = 1
 " let g:haskell_enable_recursivedo = 1
@@ -126,6 +154,12 @@ nmap gqaf :PymodeLintAuto<CR>
 " vim-jsx
 " let g:jsx_ext_required = 0
 
+" asymptote -- 自己管理
+augroup filetypedetect
+    au BufNewFile,BufRead *.asy    setf asy
+augroup END
+filetype plugin on
+
 """""""""""""""""""""""
 " 基本设置
 """""""""""""""""""""""
@@ -152,6 +186,8 @@ set number
 set relativenumber " 相对行号
 set noignorecase
 set foldlevel=1
+
+set colorcolumn=80  " 高亮 80 个字符处
 
 """"""""""""""""""
 " 主题

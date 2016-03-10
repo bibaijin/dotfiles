@@ -57,6 +57,7 @@ Thumbs.db
 __pycache__
 *.pyo
 *.pyc
+.ropeproject/
 
 # C
 *.a
