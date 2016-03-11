@@ -83,4 +83,6 @@ __pycache__
 *.out
 *.run.xml
 *.toc
+*.nav
+*.snm
 main.pdf
