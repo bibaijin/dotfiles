@@ -4,7 +4,7 @@ main.pdf: main.tex
 	latexmk -xelatex main
 
 topng:
-	convert -density 300 main.pdf img/cv.png
+	convert -density 300 main.pdf img/CV.png
 
 rename:
 	mv main.pdf "$(filename).pdf"
