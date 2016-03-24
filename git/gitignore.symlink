@@ -85,4 +85,7 @@ __pycache__
 *.toc
 *.nav
 *.snm
+*.fls
+*.fdb_latexmk
+*.thm
 main.pdf

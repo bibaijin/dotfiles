@@ -1,7 +1,7 @@
 filename=清华大学_电子工程_张凯
 
-main.pdf: main.ltx
-	xelatex main.ltx
+main.pdf: main.tex
+	latexmk -xelatex main
 
 topng:
 	convert -density 300 main.pdf img/cv.png
@@ -13,4 +13,4 @@ view:
 	okular main.pdf &
 
 clean:
-	rm -f *.aux *.bbl *.blg *.idx *.ilg *.ind *.out *.toc *.nav *.snm main.pdf *.run.xml *-blx.bib *.bcf *.log
+	rm -f *.aux *.bbl *.blg *.idx *.ilg *.ind *.out *.toc *.nav *.snm main.pdf *.run.xml *-blx.bib *.bcf *.log *.fls *.fdb_latexmk
