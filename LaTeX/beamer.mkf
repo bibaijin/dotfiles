@@ -1,10 +1,7 @@
 filename=旋进波的产生与测量
 
-main.pdf:main.ltx ref.bib
-	xelatex main.ltx
-	# biber -l zh__pinyin main
-	xelatex main.ltx
-	# xelatex main.ltx
+main.pdf:main.tex
+	latexmk -xelatex main.tex
 
 rename:
 	mv main.pdf "$(filename).pdf"
