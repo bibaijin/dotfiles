@@ -1,10 +1,7 @@
 filename=读《君主论》有感
 
-main.pdf:main.ltx ref.bib /home/bibaijin/.config/LaTeX/xelatex.ltx
-	xelatex main.ltx
-	biber -l zh__pinyin main
-	xelatex main.ltx
-	xelatex main.ltx
+main.pdf:
+	latexmk -xelatex main.tex
 
 rename:
 	mv main.pdf "$(filename).pdf"
