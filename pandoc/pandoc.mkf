@@ -1,10 +1,10 @@
-filename=周报_2016-01-22_对信道矩阵的理论仿真
+filename=思想汇报_2016-04-27
 
 topdf:
-	panpdf -l En main.md
+	panpdf -l Zh main.md
 
 view:
-	okular main.pdf &
+	evince main.pdf &
 
 rename:
 	mv main.pdf $(filename).pdf

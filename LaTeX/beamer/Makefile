@@ -1,4 +1,4 @@
-filename=旋进波的产生与测量
+filename=面试PPT-张凯
 
 main.pdf:main.tex
 	latexmk -xelatex main.tex
@@ -10,4 +10,4 @@ view:
 	okular main.pdf &
 
 clean:
-	rm -f *.aux *.bbl *.blg *.idx *.ilg *.ind *.out *.toc *.nav *.snm main.pdf *.run.xml *-blx.bib *.bcf *.log
+	rm -f *.aux *.bbl *.blg *.idx *.ilg *.ind *.out *.toc *.nav *.snm main.pdf *.run.xml *-blx.bib *.bcf *.log *.fls *.fdb_latexmk
