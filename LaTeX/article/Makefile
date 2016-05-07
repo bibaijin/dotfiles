@@ -1,9 +1,9 @@
-filename=用-MIMO-理论研究旋进波
+filename=局部轨道角动量与信道容量
 
 main.pdf: main.tex
 	latexmk -xelatex main.tex
 
-rename:
+save:
 	mv main.pdf "$(filename).pdf"
 
 view:
