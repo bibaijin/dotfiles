@@ -1,10 +1,10 @@
-filename=面试PPT-张凯
+filename=答辩PPT-2016-5-25-张凯
 
 main.pdf:main.tex
 	latexmk -xelatex main.tex
 
-rename:
-	mv main.pdf "$(filename).pdf"
+save:
+	cp main.pdf "$(filename).pdf"
 
 view:
 	okular main.pdf &

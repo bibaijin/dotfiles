@@ -1,5 +1,5 @@
 %\documentclass[14pt,xcolor=dvipsnames]{beamer}
-\documentclass{beamer}
+\documentclass[xcolor=dvipsnames]{beamer}
 
 %主题
 \usetheme{Madrid}
@@ -15,8 +15,9 @@
 %\setbeamertemplate{blocks}[rounded][shadow=true]
 %\usecolortheme{default}
 % \usecolortheme{dolphin}
+\usefonttheme[onlymath]{serif}
 \setbeamertemplate{enumerate items}[default]
-\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{itemize items}[circle]
 
 %xeCJK相关宏包
 %字体设置
@@ -54,10 +55,9 @@
 
 \renewcommand\figurename{图}
 \renewcommand\tablename{表}
-\newcommand{\ud}{\mathrm{d}}
 
 \usepackage{setspace}
-\usepackage{colortbl,xcolor,color}
+\usepackage{colortbl}
 \usepackage{hyperref}
 \hypersetup
 %{xetex,bookmarksnumbered=true,bookmarksopen,pdfborder=1,breaklinks,colorlinks=true,linkcolor=cyan,filecolor=black,urlcolor=cyan,citecolor=green}
@@ -81,13 +81,21 @@
 \usepackage[absolute,overlay]{textpos}
 
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric}
-\usetikzlibrary{trees}
-\usetikzlibrary{positioning}
+\usetikzlibrary{shapes,arrows,dsp,chains,positioning,calc,intersections,
+  arrows.meta,shadings,shapes.geometric,trees}
+\usepackage{circuitikz}
+\usepackage{marvosym}
 
 \usepackage{smartdiagram}
 
 \usepackage{booktabs}
+
+% \usepackage{enumitem}
+% \setlist{leftmarginii=0em}
+\setlength{\leftmarginii}{1.2em}
+
+\usepackage{etoolbox}
+\usepackage{spot}
 
 %\usepackage{cite}
 %\usepackage[numbers,sort&compress]{natbib}
@@ -98,20 +106,119 @@
 \setbeamertemplate{caption}[numbered]
 
 %插入目录
-\AtBeginSection[]
-{
-    \begin{frame}
-        \frametitle{目录}
-        \tableofcontents[currentsection,hideallsubsections]
-    \end{frame}
-    \addtocounter{framenumber}{-1}
+\AtBeginSection[]{
+  \begin{frame}
+  \frametitle{目录}
+  \makebox[\linewidth][c]{
+    \begin{minipage}[c]{0.85\textwidth}
+      \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/show/hide]
+    \end{minipage}}
+  \end{frame}
 }
 
-\AtBeginSubsection[]
-{
-    \begin{frame}{子目录}
-        %\setcounter{tocdepth}{2}
-        \tableofcontents[currentsection,currentsubsection,sections={\thesection}]
-    \end{frame}
-    \addtocounter{framenumber}{-1}
+\AtBeginSubsection[]{
+  \begin{frame}
+  \frametitle{目录}
+  \makebox[\linewidth][c]{
+    \begin{minipage}[c]{0.85\textwidth}
+      \tableofcontents[sectionstyle=show/shaded,
+        subsectionstyle=show/shaded/hide]
+    \end{minipage}}
+  \end{frame}
 }
+
+%% 清华主题
+\usecolortheme[named=violet]{structure}
+
+\setbeamercolor{title}{bg=Orchid,fg=white}
+
+\setbeamercolor{item projected}{fg=Orchid}
+
+\colorlet{titleleft}{Orchid}
+\colorlet{titleright}{White}
+
+\makeatletter
+
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip1.0em}{}{}
+
+\pgfdeclarehorizontalshading[titleleft,titleright]{beamer@frametitleshade}
+  {\paperheight}{%
+  color(0pt)=(titleleft);
+  color(\paperwidth)=(titleright)}
+
+\defbeamertemplate*{frametitle}{horizontal shading}{%
+  \nointerlineskip%
+  \hbox{\leavevmode
+    \advance\beamer@leftmargin by -12bp%
+    \advance\beamer@rightmargin by -12bp%
+    \beamer@tempdim=\textwidth%
+    \advance\beamer@tempdim by \beamer@leftmargin%
+    \advance\beamer@tempdim by \beamer@rightmargin%
+    \hskip-\Gm@lmargin\hbox{%
+      \setbox\beamer@tempbox=\hbox{
+        \begin{minipage}[b]{\paperwidth}%
+          \vbox{}\vskip .10ex%
+          \leftskip0.3cm%
+          \rightskip0.3cm plus1fil\leavevmode%
+          \insertframetitle%
+          \vskip-2.1ex%
+          \ifx\insertframesubtitle\@empty%
+            \strut\par%
+          \else
+            \par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]
+              {framesubtitle}\insertframesubtitle}\strut\par}%
+          \fi%
+          \nointerlineskip%
+          \vbox{}%
+        \end{minipage}}%
+      \beamer@tempdim=\ht\beamer@tempbox%
+      \advance\beamer@tempdim by 2pt%
+      \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{\beamer@tempdim}
+        \usebeamercolor{frametitle right}
+        \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}
+          {\beamer@tempdim}}
+        \pgfusepath{clip}
+        \pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}}
+      \end{pgfpicture}
+      \hskip-\paperwidth%
+      \box\beamer@tempbox}%
+    \hskip-\Gm@rmargin}%
+  \vskip-2pt}
+
+\defbeamertemplate*{section in toc}{my theme}{
+  \leavevmode\leftskip=0.0em\large{
+    \usebeamercolor[fg]{item projected}\inserttocsectionnumber.
+  }
+  {\usebeamercolor[fg]{normal text}\inserttocsection}\par
+}
+
+\defbeamertemplate*{subsection in toc}{my theme}{
+  \vskip0.3em
+  \leavevmode\leftskip=1.85em\normalsize{
+    \usebeamercolor[fg]{item projected}
+    {\footnotesize\raise0.9pt\hbox{$\bullet$}}
+  }
+  \textcolor{black}{\inserttocsubsection}\par
+}
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 自定义命令
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\ytl[2]{
+  \parbox[b]{6em}{\hfill{\color{cyan}\bfseries\sffamily #1}~$\cdots$~}
+  \makebox[0pt][c]{$\bullet$}\vrule\quad
+  \parbox[c]{8.3cm}{\vspace{7pt}\color{red!40!black!80}\raggedright\sffamily
+  #2.\\[7pt]}\\[-3pt]}
+
+\newcommand\ytlmy[2]{
+  \parbox[b]{8em}{\hfill{\color{cyan}\bfseries\sffamily #1}~$\cdots$~}
+  \makebox[0pt][c]{$\bullet$}\vrule\quad
+  \parbox[c]{8.0cm}{\vspace{7pt}\color{red!40!black!80}\raggedright\sffamily
+  #2.\\[7pt]}\\[-3pt]
+}
+\newcommand{\len}{\mathrm{len}}
+\newcommand*\mean[1]{\overline{#1}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\ud}{\mathrm{d}}
