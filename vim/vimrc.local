@@ -1,0 +1,43 @@
+set showcmd   " 显示命令
+
+" 快捷键
+imap <C-a> <Esc>I
+imap <C-e> <Esc>A
+
+" 当前行高亮
+set cursorline
+hi CursorLine term=bold cterm=bold
+set cursorcolumn
+
+set textwidth=78  " 自动换行
+set colorcolumn=80  " 高亮 80 个字符处
+" m: 按字符为单位分行
+" M: 连接行时，不要插入空格
+set formatoptions+=mM
+
+set relativenumber " 相对行号
+
+""""""""""""""""""
+" 插件配置
+""""""""""""""""""
+
+" NERDTree
+let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinSize = 28
+
+" ctrlp
+map <c-o> <c-^>
+
+" python-mode
+nmap gqaf :PymodeLintAuto<CR>
+
+" LaTeX
+let g:tex_flavor='latex'
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = "context"
+
+" asymptote -- 自己管理
+augroup filetypedetect
+    au BufNewFile,BufRead *.asy    setf asy
+augroup END
