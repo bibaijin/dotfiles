@@ -1,1 +1,0 @@
-/home/bibaijin/Code/Ruby/tmuxinator/completion/tmuxinator.zsh

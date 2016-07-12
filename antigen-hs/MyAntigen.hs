@@ -17,13 +17,10 @@ bundles =
   [ bundle "Tarrasch/zsh-functional"
   , bundle "Tarrasch/zsh-bd"
   , bundle "zsh-users/zsh-syntax-highlighting"
-  , bundle "zsh-users/zsh-history-substring-search"
+  , bundle "zsh-users/zsh-autosuggestions"
+  , (bundle "zsh-users/zsh-history-substring-search") { sourcingStrategy = antigenSourcingStrategy }
   , bundle "rimraf/k"
   , (bundle "olivierverdier/zsh-git-prompt") { sourcingStrategy = antigenSourcingStrategy }
-  , (bundle "tarruda/zsh-autosuggestions")   -- 必须在 highlighting 后面
-        { sourcingStrategy = filePathsSourcingStrategy
-                                [ "autosuggestions.zsh"
-                                ] }
   -- , bundle "tymm/zsh-directory-history"
 
   -- If you use a plugin that doesn't have a *.plugin.zsh file. You can set a

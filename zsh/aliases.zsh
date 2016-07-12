@@ -1,7 +1,10 @@
 alias reload!='. ~/.zshrc'
-alias ls="ls -h --color"
-alias ll="ls -l -h --color"
-alias la="ls -a -h --color"
+# alias ls="ls -h --color"
+# alias ll="ls -l -h --color"
+# alias la="ls -a -h --color"
+alias ls="ls -h"
+alias ll="ls -l -h"
+alias la="ls -a -h"
 alias k="k -h"
 alias reboot="sudo reboot"
 alias poweroff="sudo poweroff"
