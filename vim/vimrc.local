@@ -17,6 +17,9 @@ set formatoptions+=mM
 
 set relativenumber " 相对行号
 
+" 储存状态信息
+" set viminfo+=!
+
 """"""""""""""""""
 " 插件配置
 """"""""""""""""""
